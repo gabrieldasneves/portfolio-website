@@ -34,7 +34,7 @@ const Projects = () => {
       description:
         'Paleontological discovery and analysis full application for organizing and exploring fossil data. Built to help researchers manage and visualize paleontological findings with an intuitive interface.',
       technologies: ['React Native', 'Node JS + Express','Prisma ORM','TypeScript','Zod',],
-      githubUrl: 'https://github.com/gabrieldasneves/PaleoHunter',
+      githubUrl: 'https://github.com/gabrieldasneves/DigFinder-app',
       image: '/digfinder.png',
       inDevelopment: true,
     },
