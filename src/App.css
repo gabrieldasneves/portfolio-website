@@ -1,0 +1,30 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+section {
+  padding: 120px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+section:first-of-type {
+  padding-top: 160px;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 80px 20px;
+  }
+  
+  section:first-of-type {
+    padding-top: 120px;
+  }
+}
