@@ -208,7 +208,9 @@ export function TargetCursor({
       ]
 
       isActiveRef.current = true
-      gsap.ticker.add(tickerFnRef.current)
+      if (tickerFnRef.current) {
+        gsap.ticker.add(tickerFnRef.current)
+      }
 
       gsap.to(activeStrengthRef, {
         current: 1,
@@ -226,7 +228,9 @@ export function TargetCursor({
       })
 
       const leaveHandler = () => {
-        gsap.ticker.remove(tickerFnRef.current)
+        if (tickerFnRef.current) {
+          gsap.ticker.remove(tickerFnRef.current)
+        }
 
         isActiveRef.current = false
         targetCornerPositionsRef.current = null
