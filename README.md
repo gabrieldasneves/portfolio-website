@@ -1,102 +1,49 @@
-# Portfolio Website
+# Portfólio Website
 
-A modern and responsive portfolio website built with React, Vite, and TypeScript.
+Site de portfólio pessoal construído com Next.js, Tailwind CSS, Shadcn UI e componentes animados do ReactBits.
 
-## 🚀 Technologies
+## Tecnologias
 
-- **React 18** - JavaScript library for building user interfaces
-- **TypeScript** - JavaScript superset with static typing
-- **Vite** - Fast and modern build tool
-- **React Icons** - Popular icon library
+- **Next.js 15** - Framework React com App Router
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS** - Estilização utilitária
+- **Shadcn UI** - Componentes UI
+- **Three.js** - Gráficos 3D para animações
+- **ReactBits** - Componentes animados
 
-## 📦 Installation
-
-1. Install dependencies:
+## Instalação
 
 ```bash
 npm install
 ```
 
-## 🛠️ Development
-
-To start the development server:
+## Desenvolvimento
 
 ```bash
 npm run dev
 ```
 
-The site will be available at `http://localhost:5173`
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-## 🏗️ Build
-
-To create a production build:
-
-```bash
-npm run build
-```
-
-The files will be in the `dist` folder.
-
-## 📁 Project Structure
+## Estrutura
 
 ```
-portifoio-website/
-├── src/
-│   ├── components/          # React Components
-│   │   ├── Header.tsx       # Header with navigation
-│   │   ├── Hero.tsx         # Main section
-│   │   ├── About.tsx        # About me
-│   │   ├── Projects.tsx     # Projects
-│   │   ├── Contact.tsx      # Contact form
-│   │   └── Footer.tsx       # Footer
-│   ├── App.tsx              # Main component
-│   ├── main.tsx             # Entry point
-│   ├── App.css              # App global styles
-│   └── index.css            # Global styles
-├── index.html               # Main HTML
-├── package.json             # Dependencies
-├── tsconfig.json            # TypeScript configuration
-└── vite.config.ts           # Vite configuration
+├── app/
+│   ├── layout.tsx      # Layout principal
+│   ├── page.tsx        # Página inicial
+│   └── globals.css     # Estilos globais
+├── components/
+│   ├── ghost-cursor.tsx # Componente Ghost Cursor do ReactBits
+│   └── hero.tsx        # Seção Hero
+└── public/             # Arquivos estáticos
 ```
 
-## 🎨 Customization
+## Componentes
 
-### Colors
+### Ghost Cursor
 
-The main colors can be changed in the `src/index.css` file through CSS variables:
+Componente de cursor animado com efeito de trail, baseado no ReactBits. Renderiza um trail suave que segue o movimento do mouse.
 
-```css
-:root {
-  --primary-color: #6366f1;
-  --secondary-color: #8b5cf6;
-  --accent-color: #ec4899;
-  /* ... */
-}
-```
+### Hero
 
-### Content
-
-- **Hero**: Edit `src/components/Hero.tsx` to change name, title, and description
-- **About**: Edit `src/components/About.tsx` to update information about you and skills
-- **Projects**: Edit `src/components/Projects.tsx` to add your projects
-- **Contact**: Edit `src/components/Contact.tsx` to update contact information
-
-### Social Links
-
-Update the links in Hero and Footer sections:
-- GitHub
-- LinkedIn
-- Email
-
-## 📝 Next Steps
-
-- [ ] Add your personal information
-- [ ] Add your real projects
-- [ ] Set up email integration in the contact form
-- [ ] Add project images
-- [ ] Customize colors and themes
-- [ ] Deploy (Vercel, Netlify, etc.)
-
-## 📄 License
-
-This project is open source and available for personal use.
+Seção hero que cobre a tela inteira com o efeito ghost cursor de fundo.
