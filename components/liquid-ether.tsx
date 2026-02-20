@@ -648,11 +648,12 @@ export function LiquidEther({
         super({ output: simProps.dst })
         this.init(simProps)
       }
-      init(simProps: {
+      init(simProps?: {
         cellScale: THREE.Vector2
         cursor_size: number
         dst: THREE.WebGLRenderTarget | null
       }) {
+        if (!simProps) return
         super.init()
         const mouseG = new THREE.PlaneGeometry(1, 1)
         const uvAttr = new Float32Array([0, 0, 1, 0, 0, 1, 1, 1])
