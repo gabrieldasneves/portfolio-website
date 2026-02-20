@@ -44,7 +44,7 @@ export default function ContactPage() {
         <nav className="relative z-30 flex justify-between items-center px-8 py-6">
           <Link
             href="/"
-            className="cursor-target transition-colors text-black hover:text-white"
+            className="cursor-target transition-colors text-white hover:opacity-80"
             aria-label="Home"
           >
             <svg
@@ -64,7 +64,7 @@ export default function ContactPage() {
           </Link>
           <Link
             href="/projects"
-            className="cursor-target transition-colors text-black hover:text-white"
+            className="cursor-target transition-colors text-white hover:opacity-80"
             aria-label="Projects"
           >
             <svg
