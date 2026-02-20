@@ -27,9 +27,12 @@ export function Hero() {
           >
             View Projects
           </Link>
-          <button className="pulsing-bottom-border rounded-lg border-t-0 border-l-0 border-r-0 border-b-0 bg-transparent px-8 py-3 text-lg font-semibold text-black transition-all hover:border-2 hover:border-purple-500 hover:text-purple-500 hover:bg-black">
+          <Link
+            href="/contact"
+            className="pulsing-bottom-border rounded-lg border-t-0 border-l-0 border-r-0 border-b-0 bg-transparent px-8 py-3 text-lg font-semibold text-black transition-all hover:border-2 hover:border-purple-500 hover:text-purple-500 hover:bg-black hover:scale-105"
+          >
             Get in Touch
-          </button>
+          </Link>
         </div>
       </div>
     </section>

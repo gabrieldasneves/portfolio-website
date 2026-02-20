@@ -8,41 +8,49 @@ import { BentoGrid } from '@/components/bento-grid'
 const projects = [
   {
     id: '1',
-    primaryTitle: 'Projeto',
-    secondaryTitle: 'Projeto 1',
-    description: 'Descrição do projeto 1',
+    primaryTitle: 'D3.js, HTML & CSS',
+    secondaryTitle: 'Archon-viz',
+    description:
+      'Turn tabular data into clear, visual hierarchies. Drag, edit, and explore your structure through an intuitive UI. Export your modified data in seconds.',
+    image: '/projects/archon-viz.png',
+    url: 'https://github.com/gabrieldasneves/Archon-viz',
   },
   {
     id: '2',
-    primaryTitle: 'Projeto',
-    secondaryTitle: 'Projeto 2',
-    description: 'Descrição do projeto 2',
+    primaryTitle: 'React Native, NodeJS',
+    secondaryTitle: 'DigFinder-app',
+    description:
+      'A mobile app designed for amateur paleontologists and fossil enthusiasts. It allows users to log, map, and share fossil findings around the world.',
+    image: '/projects/digfinder-app.png',
+    url: 'https://github.com/gabrieldasneves/DigFinder-app',
   },
   {
     id: '3',
-    primaryTitle: 'Projeto',
-    secondaryTitle: 'Projeto 3',
-    description: 'Descrição do projeto 3',
+    primaryTitle: 'Jupyter Notebook',
+    secondaryTitle: 'MachineLearnStudies',
+    description:
+      "Here you'll find my collection of AI/ML/DS projects, including algorithm benchmarks, CNN practice with CIFAR-10, NBA injury prediction, and a fun manga EDA. Feel free to dive in!",
     rowSpan: 2,
+    image: '/projects/machine-learn-studies.png',
+    url: 'https://github.com/gabrieldasneves/MachineLearnStudies',
   },
   {
     id: '4',
-    primaryTitle: 'Projeto',
-    secondaryTitle: 'Projeto 4',
-    description: 'Descrição do projeto 4',
+    primaryTitle: 'TypeScript',
+    secondaryTitle: 'Node-api-tdd-solid',
+    description:
+      'Node.js backend project focused on Clean Architecture, SOLID, Design Patterns, TDD, and automated testing from unit to E2E.',
     colSpan: 2,
+    url: 'https://github.com/gabrieldasneves/Node-api-tdd-solid',
   },
   {
     id: '5',
-    primaryTitle: 'Projeto',
-    secondaryTitle: 'Projeto 5',
-    description: 'Descrição do projeto 5',
-  },
-  {
-    id: '6',
-    primaryTitle: 'Projeto',
-    secondaryTitle: 'Projeto 6',
-    description: 'Descrição do projeto 6',
+    primaryTitle: 'HTML',
+    secondaryTitle: 'credit_card_sys_interface',
+    description:
+      'This component simulates a credit card form, where it is possible to add mask to the inputs and update HTML elements via DOM.',
+    image: '/projects/credit-card-sys-interface.png',
+    url: 'https://github.com/gabrieldasneves/credit_card_sys_interface',
   },
 ]
 
