@@ -740,7 +740,7 @@ export function LiquidEther({
         const iter = iterations ?? 0
         for (let i = 0; i < iter; i++) {
           const fbo_in = i % 2 === 0 ? this.props.output0 : this.props.output1
-          fbo_out = i % 2 === 0 ? this.props.output1 : this.props.output0
+          fbo_out = (i % 2 === 0 ? this.props.output1 : this.props.output0) ?? null
           this.uniforms.velocity_new.value = fbo_in!.texture
           this.props.output = fbo_out
           if (typeof dt === 'number') this.uniforms.dt.value = dt
@@ -811,7 +811,7 @@ export function LiquidEther({
         const iter = iterations ?? 0
         for (let i = 0; i < iter; i++) {
           const p_in = i % 2 === 0 ? this.props.output0 : this.props.output1
-          p_out = i % 2 === 0 ? this.props.output1 : this.props.output0
+          p_out = (i % 2 === 0 ? this.props.output1 : this.props.output0) ?? null
           if (this.uniforms) this.uniforms.pressure.value = p_in!.texture
           this.props.output = p_out
           super.update()
@@ -903,7 +903,7 @@ export function LiquidEther({
       }
       createAllFBO() {
         const type = this.getFloatType()
-        const opts: THREE.WebGLRenderTargetOptions = {
+        const opts: THREE.RenderTargetOptions = {
           type,
           depthBuffer: false,
           stencilBuffer: false,
@@ -999,7 +999,7 @@ export function LiquidEther({
             viscous: this.options.viscous,
             iterations: this.options.iterations_viscous,
             dt: this.options.dt,
-          })
+          }) ?? null
         }
         this.divergence.update({ vel })
         const pressure = this.poisson.update({
@@ -1014,10 +1014,8 @@ export function LiquidEther({
       scene: THREE.Scene
       camera: THREE.Camera
       output: THREE.Mesh
-      private _simulationResize: () => void
       constructor() {
         this.simulation = new Simulation()
-        this._simulationResize = this.simulation.resize.bind(this.simulation)
         this.scene = new THREE.Scene()
         this.camera = new THREE.Camera()
         const mat = new THREE.RawShaderMaterial({
@@ -1036,7 +1034,11 @@ export function LiquidEther({
         this.scene.add(this.output)
       }
       resize() {
-        this._simulationResize()
+        this.simulation.calcSize()
+        for (const key of Object.keys(this.simulation.fbos)) {
+          const fbo = this.simulation.fbos[key]
+          if (fbo) fbo.setSize(this.simulation.fboSize.x, this.simulation.fboSize.y)
+        }
         (this.output.material as THREE.RawShaderMaterial).uniforms.velocity.value =
           this.simulation.fbos.vel_0!.texture
       }
