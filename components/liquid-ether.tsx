@@ -640,21 +640,23 @@ export function LiquidEther({
 
     class ExternalForce extends ShaderPass {
       mouse!: THREE.Mesh
+      private externalForceProps!: {
+        cellScale: THREE.Vector2
+        cursor_size: number
+        dst: THREE.WebGLRenderTarget | null
+      }
       constructor(simProps: {
         cellScale: THREE.Vector2
         cursor_size: number
         dst: THREE.WebGLRenderTarget | null
       }) {
         super({ output: simProps.dst })
-        this.init(simProps)
+        this.externalForceProps = simProps
+        this.init()
       }
-      init(simProps?: {
-        cellScale: THREE.Vector2
-        cursor_size: number
-        dst: THREE.WebGLRenderTarget | null
-      }) {
-        if (!simProps) return
+      init() {
         super.init()
+        const simProps = this.externalForceProps
         const mouseG = new THREE.PlaneGeometry(1, 1)
         const uvAttr = new Float32Array([0, 0, 1, 0, 0, 1, 1, 1])
         mouseG.setAttribute('uv', new THREE.BufferAttribute(uvAttr, 2))
