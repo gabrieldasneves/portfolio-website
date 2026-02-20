@@ -51,6 +51,7 @@ const projects = [
       'This component simulates a credit card form, where it is possible to add mask to the inputs and update HTML elements via DOM.',
     image: '/projects/credit-card-sys-interface.png',
     url: 'https://github.com/gabrieldasneves/credit_card_sys_interface',
+    colSpan: 3,
   },
 ]
 

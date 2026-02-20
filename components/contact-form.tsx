@@ -107,11 +107,10 @@ export function ContactForm() {
         <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:gap-4">
           <button
             type="submit"
-            className="cursor-target w-full border-2 py-3 font-mono text-xs uppercase tracking-wider transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent sm:text-sm"
+            className="cursor-target w-full border-2 py-3 font-mono text-xs uppercase tracking-wider transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#B19EEF] focus:ring-offset-2 focus:ring-offset-transparent sm:text-sm"
             style={{
               borderColor: ACCENT,
-              color: ACCENT,
-              ringColor: ACCENT
+              color: ACCENT
             }}
           >
             SEND_EMAIL
@@ -120,11 +119,10 @@ export function ContactForm() {
             href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="cursor-target flex w-full items-center justify-center border-2 py-3 font-mono text-xs uppercase tracking-wider no-underline transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent sm:text-sm"
+            className="cursor-target flex w-full items-center justify-center border-2 py-3 font-mono text-xs uppercase tracking-wider no-underline transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#B19EEF] focus:ring-offset-2 focus:ring-offset-transparent sm:text-sm"
             style={{
               borderColor: ACCENT,
-              color: ACCENT,
-              ringColor: ACCENT
+              color: ACCENT
             }}
           >
             LINKEDIN
