@@ -154,3 +154,24 @@
     box-shadow: 0 0 4px #B19EEF;
   }
 }
+
+.text-silver {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #e8e8e8 25%,
+    #c0c0c0 50%,
+    #a0a0a0 50%,
+    #c0c0c0 75%,
+    #e8e8e8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.link-silver:hover .text-silver {
+  background: linear-gradient(180deg, #B19EEF, #B19EEF);
+  -webkit-background-clip: text;
+  background-clip: text;
+}

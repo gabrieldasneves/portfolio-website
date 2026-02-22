@@ -1,8 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { Aurora } from '@/components/aurora'
-import { TargetCursor } from '@/components/target-cursor'
 import { BentoGrid } from '@/components/bento-grid'
 
 const projects = [
@@ -58,20 +56,11 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <>
-      <Aurora
-        colorStops={['#6B46C1', '#B19EEF', '#6B46C1']}
-        amplitude={0.7}
-        blend={0.5}
-      />
-      <TargetCursor targetSelector="a, button, .cursor-target" />
-      <section className="relative min-h-screen w-full overflow-hidden bg-black">
-        <nav className="relative z-30 flex justify-between items-center px-8 py-6">
+      <section className="relative h-screen w-full flex flex-col overflow-hidden bg-black">
+        <nav className="flex-shrink-0 z-30 flex justify-between items-center px-6 py-3 bg-black">
           <Link
             href="/"
-            className="cursor-target transition-colors"
-            style={{ color: '#000000' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#000000')}
+            className="transition-colors text-white hover:opacity-80"
             aria-label="Home"
           >
             <svg
@@ -91,10 +80,7 @@ export default function ProjectsPage() {
           </Link>
           <Link
             href="/contact"
-            className="cursor-target transition-colors"
-            style={{ color: '#000000' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#000000')}
+            className="transition-colors text-white hover:opacity-80"
             aria-label="Contact Me"
           >
             <svg
@@ -113,7 +99,7 @@ export default function ProjectsPage() {
             </svg>
           </Link>
         </nav>
-        <div className="relative z-20 flex min-h-screen w-full flex-col items-center px-4 py-20">
+        <div className="relative z-20 flex-1 min-h-0 w-full overflow-auto">
           <BentoGrid projects={projects} />
         </div>
       </section>
