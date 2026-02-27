@@ -71,7 +71,7 @@ export function FloatingMenu() {
   const pathname = usePathname()
   const scrollContext = useScroll()
   const filteredItems = menuItems.filter((item) => pathname !== item.href)
-  const isHorizontal = pathname === '/projects'
+  const isHorizontal = pathname === '/projects' || pathname === '/contact'
   const scrollY = scrollContext?.scrollY ?? 0
   const isHidden = isHorizontal && scrollY > 0
 

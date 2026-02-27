@@ -24,111 +24,77 @@ export function ContactForm() {
   }, [subject, body])
 
   return (
-    <div
-      className="w-full max-w-md rounded-sm border-2 bg-black/50 px-6 py-8 shadow-[0_0_20px_rgba(177,158,239,0.2)] sm:px-8 sm:py-10"
-      style={{ borderColor: ACCENT }}
-    >
-      {/* Title bar */}
+    <div className="relative w-full max-w-md">
       <div
-        className="mb-8 flex items-center gap-2 font-mono text-xs uppercase tracking-wider sm:text-sm"
-        style={{ color: ACCENT }}
+        className="rounded-xl border border-gray-700 bg-black/60 px-8 py-10 backdrop-blur-sm shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+        style={{ boxShadow: `0 8px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(177,158,239,0.1)` }}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden
+        <h2 className="mb-8 text-center text-lg font-bold uppercase tracking-wide text-white/90">
+          Contact
+        </h2>
+
+        <form
+          id="contact-form"
+          className="flex flex-col gap-8"
+          onSubmit={(e) => {
+            e.preventDefault()
+            handleSendEmail()
+          }}
         >
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-          <polyline points="22,6 12,13 2,6" />
-        </svg>
-        <span>CONTACT</span>
+          <div className="flex flex-col">
+            <input
+              id="contact-subject"
+              type="text"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              placeholder="Subject"
+              className="w-full border-0 border-b border-gray-600 bg-transparent py-2 text-gray-200 placeholder:text-gray-500 focus:border-[#B19EEF] focus:outline-none"
+              style={{ caretColor: ACCENT }}
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <textarea
+              id="contact-message"
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              placeholder="Your message"
+              rows={4}
+              className="w-full resize-y border-0 border-b border-gray-600 bg-transparent py-2 text-gray-200 placeholder:text-gray-500 focus:border-[#B19EEF] focus:outline-none"
+              style={{ caretColor: ACCENT }}
+            />
+          </div>
+        </form>
       </div>
 
-      <form
-        className="flex flex-col gap-6 sm:gap-8"
-        onSubmit={(e) => {
-          e.preventDefault()
-          handleSendEmail()
-        }}
-      >
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor="contact-subject"
-            className="font-mono text-xs uppercase tracking-wider sm:text-sm"
-            style={{ color: ACCENT }}
-          >
-            SUBJECT
-          </label>
-          <input
-            id="contact-subject"
-            type="text"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-            placeholder=" "
-            className="w-full border-b bg-transparent py-2 font-mono text-sm uppercase tracking-wider placeholder:opacity-50 focus:outline-none sm:text-base"
+      <div className="absolute -bottom-4 left-0 right-0 z-20 flex items-center justify-between px-6 md:px-0">
+        <a
+          href={LINKEDIN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="-ml-2 flex h-12 min-w-[120px] items-center justify-center rounded-full border border-gray-600 bg-black px-6 text-sm font-semibold uppercase tracking-wide text-gray-200 transition-all duration-300 hover:scale-105 hover:border-[#0A66C2] hover:bg-[#0A66C2] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B19EEF] focus:ring-offset-2 focus:ring-offset-black md:-ml-4"
+        >
+          LinkedIn
+        </a>
+        <button
+          type="submit"
+          form="contact-form"
+          className="relative -mr-2 flex h-12 min-w-[120px] items-center justify-center rounded-full px-6 text-sm font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#B19EEF] focus:ring-offset-2 focus:ring-offset-black md:-mr-4"
+          style={{ backgroundColor: ACCENT }}
+        >
+          <span
+            className="absolute right-1 top-1 opacity-80"
             style={{
-              borderColor: ACCENT,
-              color: ACCENT,
-              caretColor: ACCENT
+              width: 0,
+              height: 0,
+              borderStyle: 'solid',
+              borderWidth: '0 10px 10px 0',
+              borderColor: 'transparent rgba(0,0,0,0.3) transparent transparent'
             }}
           />
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor="contact-message"
-            className="font-mono text-xs uppercase tracking-wider sm:text-sm"
-            style={{ color: ACCENT }}
-          >
-            MESSAGE
-          </label>
-          <textarea
-            id="contact-message"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-            placeholder=" "
-            rows={4}
-            className="w-full resize-y border-b bg-transparent py-2 font-mono text-sm uppercase tracking-wider placeholder:opacity-50 focus:outline-none sm:text-base"
-            style={{
-              borderColor: ACCENT,
-              color: ACCENT,
-              caretColor: ACCENT
-            }}
-          />
-        </div>
-
-        <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:gap-4">
-          <button
-            type="submit"
-            className="w-full border-2 py-3 font-mono text-xs uppercase tracking-wider transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#B19EEF] focus:ring-offset-2 focus:ring-offset-transparent sm:text-sm"
-            style={{
-              borderColor: ACCENT,
-              color: ACCENT
-            }}
-          >
-            SEND_EMAIL
-          </button>
-          <a
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex w-full items-center justify-center border-2 py-3 font-mono text-xs uppercase tracking-wider no-underline transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#B19EEF] focus:ring-offset-2 focus:ring-offset-transparent sm:text-sm"
-            style={{
-              borderColor: ACCENT,
-              color: ACCENT
-            }}
-          >
-            LINKEDIN
-          </a>
-        </div>
-      </form>
+          Send Email
+        </button>
+      </div>
     </div>
   )
 }
