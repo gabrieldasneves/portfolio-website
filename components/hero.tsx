@@ -11,7 +11,7 @@ export function Hero() {
         className="absolute inset-0 z-0 overflow-hidden"
         aria-hidden
       >
-        <div className="absolute inset-0 origin-center scale-100 md:scale-95 lg:scale-90 xl:scale-85 2xl:scale-80">
+        <div className="absolute inset-0">
           <Image
             src="/hero-photo.png"
             alt=""
@@ -24,23 +24,20 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
-      <div className="relative z-20 flex h-full w-full flex-col items-center justify-between pt-4 pb-16 px-4 text-center">
-        <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl">
-          <ShinyText
-            text="Gabriel das Neves"
-            speed={2}
-            delay={0}
-            color="#b5b5b5"
-            shineColor="#ffffff"
-            spread={120}
-            direction="left"
-          />
-        </h1>
-
-        <div />
-
-      <div className="absolute bottom-4 left-0 right-0 z-20 w-full max-w-4xl mx-auto px-4 flex flex-col items-center gap-6">
-        <p className="text-base md:text-lg text-center">
+      <div className="relative z-20 flex h-full w-full flex-col items-center justify-end pb-16 pt-4 px-4 text-center">
+        <div className="flex flex-col items-center gap-6 w-full">
+          <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl">
+            <ShinyText
+              text="Gabriel das Neves"
+              speed={2}
+              delay={0}
+              color="#b5b5b5"
+              shineColor="#ffffff"
+              spread={120}
+              direction="left"
+            />
+          </h1>
+          <p className="text-base md:text-lg text-center max-w-4xl mx-auto px-4">
           <ShinyText
             text="Computer engineer"
             speed={2}
@@ -61,7 +58,9 @@ export function Hero() {
             direction="left"
           />
         </p>
-        <TechLogoLoop />
+        <div className="w-full px-4 md:px-8">
+          <TechLogoLoop />
+        </div>
       </div>
       </div>
     </section>
