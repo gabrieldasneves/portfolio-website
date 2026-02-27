@@ -16,14 +16,18 @@ export const metadata: Metadata = {
   description: 'Computer engineer and paleontology enthusiast',
 }
 
+export const viewport = {
+  themeColor: '#000000',
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR">
-      <body className={`${inter.className} ${roboto.variable}`}>
+    <html lang="pt-BR" className="bg-black">
+      <body className={`${inter.className} ${roboto.variable} bg-black`}>
         <ScrollProvider>
           <FloatingMenu />
           {children}
