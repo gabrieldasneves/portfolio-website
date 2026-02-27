@@ -25,8 +25,8 @@ const projects = [
   },
   {
     id: '3',
-    primaryTitle: 'Jupyter Notebook',
-    secondaryTitle: 'MachineLearnStudies',
+    primaryTitle: 'Python, Jupyter Notebook',
+    secondaryTitle: 'Machine Learning Studies',
     description:
       "Here you'll find my collection of AI/ML/DS projects, including algorithm benchmarks, CNN practice with CIFAR-10, NBA injury prediction, and a fun manga EDA. Feel free to dive in!",
     rowSpan: 2,
@@ -35,8 +35,8 @@ const projects = [
   },
   {
     id: '4',
-    primaryTitle: 'TypeScript',
-    secondaryTitle: 'Node-api-tdd-solid',
+    primaryTitle: 'NodeJS, Prisma, Fastify',
+    secondaryTitle: 'Node API with TDD and SOLID',
     description:
       'Node.js backend project focused on Clean Architecture, SOLID, Design Patterns, TDD, and automated testing from unit to E2E.',
     colSpan: 2,
@@ -44,8 +44,8 @@ const projects = [
   },
   {
     id: '5',
-    primaryTitle: 'HTML',
-    secondaryTitle: 'credit_card_sys_interface',
+    primaryTitle: 'HTML, CSS, FIGMA',
+    secondaryTitle: 'Credit card system interface',
     description:
       'This component simulates a credit card form, where it is possible to add mask to the inputs and update HTML elements via DOM.',
     image: '/projects/credit-card-sys-interface.png',
