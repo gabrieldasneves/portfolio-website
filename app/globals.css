@@ -147,11 +147,11 @@
 @keyframes pulseBottomBorder {
   0%, 100% {
     opacity: 1;
-    box-shadow: 0 0 8px #B19EEF;
+    box-shadow: 0 0 8px #a0a0a0;
   }
   50% {
     opacity: 0.4;
-    box-shadow: 0 0 4px #B19EEF;
+    box-shadow: 0 0 4px #a0a0a0;
   }
 }
 
@@ -171,7 +171,7 @@
 }
 
 .link-silver:hover .text-silver {
-  background: linear-gradient(180deg, #B19EEF, #B19EEF);
+  background: linear-gradient(180deg, #a0a0a0, #a0a0a0);
   -webkit-background-clip: text;
   background-clip: text;
 }

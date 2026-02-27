@@ -1,8 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
 import { ShinyText } from './shiny-text'
+import { TechLogoLoop } from './logo-loop'
 
 export function Hero() {
   return (
@@ -36,21 +36,33 @@ export function Hero() {
             direction="left"
           />
         </h1>
-        
-        <div className="flex flex-col gap-4 sm:flex-row">
-          <Link
-            href="/projects"
-            className="link-silver pulsing-bottom-border rounded-lg border-t-0 border-l-0 border-r-0 border-b-0 bg-transparent px-8 py-3 text-lg font-semibold transition-all hover:border-2 hover:border-purple-500 hover:bg-black hover:scale-105"
-          >
-            <span className="text-silver">View Projects</span>
-          </Link>
-          <Link
-            href="/contact"
-            className="link-silver pulsing-bottom-border rounded-lg border-t-0 border-l-0 border-r-0 border-b-0 bg-transparent px-8 py-3 text-lg font-semibold transition-all hover:border-2 hover:border-purple-500 hover:bg-black hover:scale-105"
-          >
-            <span className="text-silver">Get in Touch</span>
-          </Link>
-        </div>
+
+        <div />
+
+      <div className="absolute bottom-4 left-0 right-0 z-20 w-full max-w-4xl mx-auto px-4 flex flex-col items-center gap-6">
+        <p className="text-base md:text-lg text-center">
+          <ShinyText
+            text="Computer engineer"
+            speed={2}
+            delay={0.5}
+            color="#b5b5b5"
+            shineColor="#ffffff"
+            spread={120}
+            direction="left"
+          />
+          <br />
+          <ShinyText
+            text="Paleontology enthusiast"
+            speed={2}
+            delay={0.7}
+            color="#b5b5b5"
+            shineColor="#ffffff"
+            spread={120}
+            direction="left"
+          />
+        </p>
+        <TechLogoLoop />
+      </div>
       </div>
     </section>
   )

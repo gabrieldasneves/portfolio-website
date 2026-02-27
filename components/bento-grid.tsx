@@ -17,25 +17,28 @@ interface BentoGridProps {
   projects: Project[]
 }
 
+const colSpanClasses: Record<number, string> = {
+  1: 'md:col-span-1',
+  2: 'md:col-span-2',
+  3: 'md:col-span-3',
+}
+
+const rowSpanClasses: Record<number, string> = {
+  1: 'md:row-span-1',
+  2: 'md:row-span-2',
+}
+
 export function BentoGrid({ projects }: BentoGridProps) {
   return (
-    <div
-      className="grid gap-3 mx-auto p-4"
-      style={{
-        width: '61.8%',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gridAutoRows: 'minmax(120px, auto)',
-      }}
-    >
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mx-auto p-4 w-full md:w-[61.8%] [grid-auto-rows:minmax(120px,auto)]">
       {projects.map((project) => {
         const colSpan = project.colSpan ?? 1
         const rowSpan = project.rowSpan ?? 1
         const cardClass =
-          'cursor-target relative rounded-xl border border-gray-700 overflow-hidden hover:border-gray-500 transition-colors min-h-[140px] block'
-        const style = {
-          gridColumn: `span ${colSpan}` as const,
-          gridRow: `span ${rowSpan}` as const,
-        }
+          'cursor-target relative rounded-xl border border-gray-700 overflow-hidden hover:border-gray-500 transition-colors min-h-[140px] block col-span-1 row-span-1 ' +
+          (colSpanClasses[colSpan] ?? colSpanClasses[1]) +
+          ' ' +
+          (rowSpanClasses[rowSpan] ?? rowSpanClasses[1])
 
         const content = (
           <>
@@ -74,7 +77,6 @@ export function BentoGrid({ projects }: BentoGridProps) {
               target="_blank"
               rel="noopener noreferrer"
               className={cardClass}
-              style={style}
             >
               {content}
             </a>
@@ -82,7 +84,7 @@ export function BentoGrid({ projects }: BentoGridProps) {
         }
 
         return (
-          <div key={project.id} className={cardClass} style={style}>
+          <div key={project.id} className={cardClass}>
             {content}
           </div>
         )
