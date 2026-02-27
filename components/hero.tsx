@@ -6,9 +6,9 @@ import { TechLogoLoop } from './logo-loop'
 
 export function Hero() {
   return (
-    <section className="relative min-h-[100dvh] w-full overflow-hidden bg-black">
+    <section className="relative h-screen w-full overflow-hidden bg-black">
       <div
-        className="fixed inset-0 z-0 overflow-hidden"
+        className="absolute inset-0 z-0 overflow-hidden"
         aria-hidden
       >
         <div className="absolute inset-0">
