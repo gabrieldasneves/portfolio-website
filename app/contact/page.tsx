@@ -6,12 +6,12 @@ import { useScroll } from '@/contexts/scroll-context'
 
 export default function ContactPage() {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const { registerScrollContainer } = useScroll()
+  const scrollContext = useScroll()
 
   useEffect(() => {
-    registerScrollContainer(scrollRef.current)
-    return () => registerScrollContainer(null)
-  }, [registerScrollContainer])
+    scrollContext?.registerScrollContainer(scrollRef.current)
+    return () => scrollContext?.registerScrollContainer(null)
+  }, [scrollContext])
 
   return (
     <>

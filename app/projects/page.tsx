@@ -56,12 +56,12 @@ const projects = [
 
 export default function ProjectsPage() {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const { registerScrollContainer } = useScroll()
+  const scrollContext = useScroll()
 
   useEffect(() => {
-    registerScrollContainer(scrollRef.current)
-    return () => registerScrollContainer(null)
-  }, [registerScrollContainer])
+    scrollContext?.registerScrollContainer(scrollRef.current)
+    return () => scrollContext?.registerScrollContainer(null)
+  }, [scrollContext])
 
   return (
     <>
