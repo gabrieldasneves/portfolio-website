@@ -26,7 +26,7 @@ export function ContactForm() {
   return (
     <div className="relative w-full max-w-md">
       <div
-        className="rounded-xl border border-gray-700 bg-black/60 px-8 py-10 backdrop-blur-sm shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+        className="rounded-xl border border-gray-700 bg-black/60 px-8 pt-10 pb-20 backdrop-blur-sm shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
         style={{ boxShadow: `0 8px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(177,158,239,0.1)` }}
       >
         <h2 className="mb-8 text-center text-lg font-bold uppercase tracking-wide text-white/90">
@@ -67,19 +67,19 @@ export function ContactForm() {
         </form>
       </div>
 
-      <div className="absolute -bottom-4 left-0 right-0 z-20 flex items-center justify-between px-6 md:px-0">
+      <div className="absolute -bottom-4 left-0 right-0 z-20 flex items-center justify-center gap-4 px-6 md:px-0">
         <a
           href={LINKEDIN_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="-ml-2 flex h-12 min-w-[120px] items-center justify-center rounded-full border border-gray-600 bg-black px-6 text-sm font-semibold uppercase tracking-wide text-gray-200 transition-all duration-300 hover:scale-105 hover:border-[#0A66C2] hover:bg-[#0A66C2] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B19EEF] focus:ring-offset-2 focus:ring-offset-black md:-ml-4"
+          className="flex h-12 min-w-[120px] items-center justify-center rounded-full border border-gray-600 bg-black px-6 text-sm font-semibold uppercase tracking-wide text-gray-200 transition-all duration-300 hover:scale-105 hover:border-[#0A66C2] hover:bg-[#0A66C2] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B19EEF] focus:ring-offset-2 focus:ring-offset-black"
         >
           LinkedIn
         </a>
         <button
           type="submit"
           form="contact-form"
-          className="relative -mr-2 flex h-12 min-w-[120px] items-center justify-center rounded-full px-6 text-sm font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#B19EEF] focus:ring-offset-2 focus:ring-offset-black md:-mr-4"
+          className="relative flex h-12 min-w-[120px] items-center justify-center rounded-full px-6 text-sm font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#B19EEF] focus:ring-offset-2 focus:ring-offset-black"
           style={{ backgroundColor: ACCENT }}
         >
           <span
