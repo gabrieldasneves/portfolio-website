@@ -58,7 +58,7 @@ export function Hero() {
             direction="left"
           />
         </p>
-        <div className="w-full px-4 md:px-8">
+        <div className="w-full -mx-4 md:mx-0 md:px-8">
           <TechLogoLoop />
         </div>
       </div>

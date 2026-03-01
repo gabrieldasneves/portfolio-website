@@ -54,16 +54,16 @@ const menuItems = [
 
 const colorClasses = {
   purple: {
-    icon: 'border-gray-500/50 bg-gray-600/30 text-gray-400 group-hover:border-purple-400/60 group-hover:bg-purple-500/20 group-hover:text-purple-300 group-active:border-purple-400/60 group-active:bg-purple-500/20 group-active:text-purple-300',
-    text: 'text-gray-400 group-hover:text-purple-200 group-active:text-purple-200',
+    icon: 'border-gray-500/50 bg-gray-600/30 text-gray-400 group-hover:border-purple-400/60 group-hover:bg-purple-500/20 group-hover:text-purple-300',
+    text: 'text-gray-400 group-hover:text-purple-200',
   },
   blue: {
-    icon: 'border-gray-500/50 bg-gray-600/30 text-gray-400 group-hover:border-blue-400/60 group-hover:bg-blue-500/20 group-hover:text-blue-300 group-active:border-blue-400/60 group-active:bg-blue-500/20 group-active:text-blue-300',
-    text: 'text-gray-400 group-hover:text-blue-200 group-active:text-blue-200',
+    icon: 'border-gray-500/50 bg-gray-600/30 text-gray-400 group-hover:border-blue-400/60 group-hover:bg-blue-500/20 group-hover:text-blue-300',
+    text: 'text-gray-400 group-hover:text-blue-200',
   },
   green: {
-    icon: 'border-gray-500/50 bg-gray-600/30 text-gray-400 group-hover:border-green-400/60 group-hover:bg-green-500/20 group-hover:text-green-300 group-active:border-green-400/60 group-active:bg-green-500/20 group-active:text-green-300',
-    text: 'text-gray-400 group-hover:text-green-200 group-active:text-green-200',
+    icon: 'border-gray-500/50 bg-gray-600/30 text-gray-400 group-hover:border-green-400/60 group-hover:bg-green-500/20 group-hover:text-green-300',
+    text: 'text-gray-400 group-hover:text-green-200',
   },
 }
 
@@ -90,10 +90,10 @@ export function FloatingMenu() {
         return (
           <li
             key={item.href}
-            className={`group overflow-hidden rounded-lg border-transparent transition-all duration-500 hover:bg-black/60 hover:backdrop-blur-sm hover:border-gray-500/50 hover:shadow-lg has-[:focus]:bg-black/60 has-[:focus]:backdrop-blur-sm has-[:focus]:border-gray-500/50 has-[:focus]:shadow-lg ${
+            className={`group overflow-hidden rounded-lg border-transparent transition-all duration-500 hover:bg-black/60 hover:backdrop-blur-sm hover:border-gray-500/50 hover:shadow-lg ${
               isHorizontal
                 ? 'h-14 w-14'
-                : 'w-14 hover:w-64 has-[:focus]:w-64 border-l'
+                : 'w-14 hover:w-64 border-l'
             }`}
           >
             <Link
