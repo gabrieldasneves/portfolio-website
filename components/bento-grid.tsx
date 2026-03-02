@@ -11,6 +11,7 @@ interface Project {
   url?: string
   colSpan?: number
   rowSpan?: number
+  inProgress?: boolean
 }
 
 interface BentoGridProps {
@@ -42,6 +43,17 @@ export function BentoGrid({ projects }: BentoGridProps) {
 
         const content = (
           <>
+            {project.inProgress && (
+              <span
+                className="absolute top-3 right-3 z-20 rounded px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white"
+                style={{
+                  backgroundColor: 'rgba(220, 38, 38, 0.9)',
+                  boxShadow: '0 0 12px rgba(220, 38, 38, 0.8), 0 0 24px rgba(220, 38, 38, 0.4)',
+                }}
+              >
+                in Progress
+              </span>
+            )}
             {project.image && (
               <>
                 <Image

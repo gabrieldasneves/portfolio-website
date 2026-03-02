@@ -18,6 +18,7 @@ const projects = [
     id: '2',
     primaryTitle: 'React Native, NodeJS',
     secondaryTitle: 'DigFinder-app',
+    inProgress: true,
     description:
       'A mobile app designed for amateur paleontologists and fossil enthusiasts. It allows users to log, map, and share fossil findings around the world.',
     image: '/projects/digfinder-app.png',
@@ -37,6 +38,7 @@ const projects = [
     id: '4',
     primaryTitle: 'NodeJS, Prisma, Fastify',
     secondaryTitle: 'Node API with TDD and SOLID',
+    inProgress: true,
     description:
       'Node.js backend project focused on Clean Architecture, SOLID, Design Patterns, TDD, and automated testing from unit to E2E.',
     colSpan: 2,
