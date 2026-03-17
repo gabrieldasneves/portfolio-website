@@ -12,6 +12,8 @@ interface Project {
   colSpan?: number
   rowSpan?: number
   inProgress?: boolean
+  imageBrightness?: number
+  objectPosition?: string
 }
 
 interface BentoGridProps {
@@ -31,12 +33,12 @@ const rowSpanClasses: Record<number, string> = {
 
 export function BentoGrid({ projects }: BentoGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mx-auto p-4 w-full md:w-[61.8%] [grid-auto-rows:minmax(120px,auto)]">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mx-auto p-4 w-full md:w-[85%] md:max-w-6xl [grid-auto-rows:minmax(200px,auto)] md:[grid-auto-rows:minmax(120px,auto)]">
       {projects.map((project) => {
         const colSpan = project.colSpan ?? 1
         const rowSpan = project.rowSpan ?? 1
         const cardClass =
-          'cursor-target relative rounded-xl border border-gray-700 overflow-hidden hover:border-gray-500 transition-colors min-h-[140px] block col-span-1 row-span-1 ' +
+          'cursor-target relative rounded-xl border border-gray-700 overflow-hidden hover:border-gray-500 transition-colors min-h-[220px] md:min-h-[140px] block col-span-1 row-span-1 ' +
           (colSpanClasses[colSpan] ?? colSpanClasses[1]) +
           ' ' +
           (rowSpanClasses[rowSpan] ?? rowSpanClasses[1])
@@ -60,10 +62,18 @@ export function BentoGrid({ projects }: BentoGridProps) {
                   src={project.image}
                   alt=""
                   fill
-                  className="object-cover brightness-[0.5]"
+                  className="object-cover"
+                  style={{
+                    filter: `brightness(${project.imageBrightness ?? 0.5})`,
+                    objectPosition: project.objectPosition ?? 'center',
+                  }}
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-black/40" aria-hidden />
+                <div
+                  className="absolute inset-0"
+                  style={{ backgroundColor: `rgba(0,0,0,${project.imageBrightness != null ? 0.2 : 0.4})` }}
+                  aria-hidden
+                />
               </>
             )}
             {!project.image && (
@@ -75,7 +85,7 @@ export function BentoGrid({ projects }: BentoGridProps) {
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
                   {project.secondaryTitle}
                 </h3>
-                <p className="text-xs text-gray-400 line-clamp-2">{project.description}</p>
+                <p className="text-xs text-gray-400 line-clamp-3">{project.description}</p>
               </div>
             </div>
           </>

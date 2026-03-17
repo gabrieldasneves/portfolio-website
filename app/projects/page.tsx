@@ -7,12 +7,14 @@ import { useScroll } from '@/contexts/scroll-context'
 const projects = [
   {
     id: '1',
-    primaryTitle: 'D3.js, HTML & CSS',
-    secondaryTitle: 'Archon-viz',
+    primaryTitle: 'Next.js, Agentic AI, Claude API, Opencode',
+    secondaryTitle: 'IsMyCodeTrash',
     description:
-      'Turn tabular data into clear, visual hierarchies. Drag, edit, and explore your structure through an intuitive UI. Export your modified data in seconds.',
-    image: '/projects/archon-viz.png',
-    url: 'https://github.com/gabrieldasneves/Archon-viz',
+      'AI-powered code roaster. Paste your code and get brutally honest feedback from Claude — shame scores, verdicts, suggested fixes, and a public leaderboard. Built with Next.js 16, tRPC, Drizzle, Vercel AI SDK, and Shiki.',
+    image: '/projects/ismycodetrash.png',
+    url: 'https://github.com/gabrieldasneves/IsMyCodeTrash',
+    imageBrightness: 0.65,
+    objectPosition: 'center top',
   },
   {
     id: '2',
@@ -36,23 +38,33 @@ const projects = [
   },
   {
     id: '4',
+    primaryTitle: 'D3.js, HTML & CSS',
+    secondaryTitle: 'Archon-viz',
+    description:
+      'Turn tabular data into clear, visual hierarchies. Drag, edit, and explore your structure through an intuitive UI. Export your modified data in seconds.',
+    image: '/projects/archon-viz.png',
+    url: 'https://github.com/gabrieldasneves/Archon-viz',
+    colSpan: 2,
+  },
+  {
+    id: '5',
     primaryTitle: 'NodeJS, Prisma, Fastify',
     secondaryTitle: 'Node API with TDD and SOLID',
     inProgress: true,
     description:
       'Node.js backend project focused on Clean Architecture, SOLID, Design Patterns, TDD, and automated testing from unit to E2E.',
-    colSpan: 2,
+    colSpan: 3,
     url: 'https://github.com/gabrieldasneves/Node-api-tdd-solid',
   },
   {
-    id: '5',
+    id: '6',
     primaryTitle: 'HTML, CSS, FIGMA',
     secondaryTitle: 'Credit card system interface',
     description:
       'This component simulates a credit card form, where it is possible to add mask to the inputs and update HTML elements via DOM.',
     image: '/projects/credit-card-sys-interface.png',
     url: 'https://github.com/gabrieldasneves/credit_card_sys_interface',
-    colSpan: 3,
+    colSpan: 2,
   },
 ]
 
