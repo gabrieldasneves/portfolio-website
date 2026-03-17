@@ -32,9 +32,9 @@ const projects = [
     secondaryTitle: 'Machine Learning Studies',
     description:
       "Here you'll find my collection of AI/ML/DS projects, including algorithm benchmarks, CNN practice with CIFAR-10, NBA injury prediction, and a fun manga EDA. Feel free to dive in!",
-    rowSpan: 2,
     image: '/projects/machine-learn-studies.png',
     url: 'https://github.com/gabrieldasneves/MachineLearnStudies',
+    colSpan: 2,
   },
   {
     id: '4',
@@ -44,7 +44,7 @@ const projects = [
       'Turn tabular data into clear, visual hierarchies. Drag, edit, and explore your structure through an intuitive UI. Export your modified data in seconds.',
     image: '/projects/archon-viz.png',
     url: 'https://github.com/gabrieldasneves/Archon-viz',
-    colSpan: 2,
+    colSpan: 3,
   },
   {
     id: '5',
@@ -64,7 +64,7 @@ const projects = [
       'This component simulates a credit card form, where it is possible to add mask to the inputs and update HTML elements via DOM.',
     image: '/projects/credit-card-sys-interface.png',
     url: 'https://github.com/gabrieldasneves/credit_card_sys_interface',
-    colSpan: 2,
+    colSpan: 6,
   },
 ]
 

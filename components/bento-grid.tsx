@@ -21,9 +21,9 @@ interface BentoGridProps {
 }
 
 const colSpanClasses: Record<number, string> = {
-  1: 'md:col-span-1',
   2: 'md:col-span-2',
   3: 'md:col-span-3',
+  6: 'md:col-span-6',
 }
 
 const rowSpanClasses: Record<number, string> = {
@@ -33,13 +33,13 @@ const rowSpanClasses: Record<number, string> = {
 
 export function BentoGrid({ projects }: BentoGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mx-auto p-4 w-full md:w-[85%] md:max-w-6xl [grid-auto-rows:minmax(200px,auto)] md:[grid-auto-rows:minmax(120px,auto)]">
+    <div className="grid grid-cols-1 md:grid-cols-6 gap-3 mx-auto p-4 w-full md:w-[85%] md:max-w-6xl [grid-auto-rows:minmax(200px,auto)] md:[grid-auto-rows:minmax(120px,auto)]">
       {projects.map((project) => {
-        const colSpan = project.colSpan ?? 1
+        const colSpan = project.colSpan ?? 2
         const rowSpan = project.rowSpan ?? 1
         const cardClass =
           'cursor-target relative rounded-xl border border-gray-700 overflow-hidden hover:border-gray-500 transition-colors min-h-[220px] md:min-h-[140px] block col-span-1 row-span-1 ' +
-          (colSpanClasses[colSpan] ?? colSpanClasses[1]) +
+          (colSpanClasses[colSpan] ?? colSpanClasses[2]) +
           ' ' +
           (rowSpanClasses[rowSpan] ?? rowSpanClasses[1])
 
@@ -67,7 +67,7 @@ export function BentoGrid({ projects }: BentoGridProps) {
                     filter: `brightness(${project.imageBrightness ?? 0.5})`,
                     objectPosition: project.objectPosition ?? 'center',
                   }}
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, 20vw"
                 />
                 <div
                   className="absolute inset-0"
