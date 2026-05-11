@@ -22,7 +22,10 @@ export function Hero() {
             sizes="100vw"
           />
         </div>
-        <div className="absolute inset-0 bg-black/60" />
+        <div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_85%_70%_at_50%_38%,rgba(0,0,0,0)_0%,rgba(0,0,0,0.1)_32%,rgba(0,0,0,0.38)_58%,rgba(0,0,0,0.68)_100%)]"
+          aria-hidden
+        />
       </div>
 
       <div className="relative z-20 flex h-full w-full flex-col items-center justify-end pb-16 pt-4 px-4 text-center">
