@@ -18,6 +18,7 @@ export function Hero() {
             fill
             className="object-cover grayscale"
             priority
+            quality={92}
             sizes="100vw"
           />
         </div>
