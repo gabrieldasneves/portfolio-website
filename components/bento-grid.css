@@ -1,0 +1,11 @@
+.bento-logo {
+  width: var(--bento-logo-size);
+  height: var(--bento-logo-size);
+}
+
+@media (min-width: 768px) {
+  .bento-logo {
+    width: var(--bento-logo-size-md, var(--bento-logo-size));
+    height: var(--bento-logo-size-md, var(--bento-logo-size));
+  }
+}

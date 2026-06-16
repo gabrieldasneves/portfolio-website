@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import './bento-grid.css'
 
 interface Project {
   id: string
@@ -14,6 +15,8 @@ interface Project {
   inProgress?: boolean
   imageBrightness?: number
   objectPosition?: string
+  imageSize?: number
+  imageSizeMd?: number
 }
 
 interface BentoGridProps {
@@ -58,22 +61,52 @@ export function BentoGrid({ projects }: BentoGridProps) {
             )}
             {project.image && (
               <>
-                <Image
-                  src={project.image}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  style={{
-                    filter: `brightness(${project.imageBrightness ?? 0.5})`,
-                    objectPosition: project.objectPosition ?? 'center',
-                  }}
-                  sizes="(max-width: 768px) 100vw, 20vw"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{ backgroundColor: `rgba(0,0,0,${project.imageBrightness != null ? 0.2 : 0.4})` }}
-                  aria-hidden
-                />
+                {project.imageSize ? (
+                  <>
+                    <div className="absolute inset-0 bg-black" aria-hidden />
+                    <div className="absolute inset-0 z-[5] flex items-center justify-center pointer-events-none">
+                      <div
+                        className="relative bento-logo"
+                        style={{
+                          ['--bento-logo-size' as string]: `${project.imageSize}px`,
+                          ...(project.imageSizeMd != null
+                            ? { ['--bento-logo-size-md' as string]: `${project.imageSizeMd}px` }
+                            : {}),
+                        }}
+                      >
+                        <Image
+                          src={project.image}
+                          alt=""
+                          fill
+                          className="object-contain"
+                          style={{
+                            filter: `brightness(${project.imageBrightness ?? 1})`,
+                          }}
+                          sizes={`${project.imageSize}px`}
+                        />
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <Image
+                      src={project.image}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      style={{
+                        filter: `brightness(${project.imageBrightness ?? 0.5})`,
+                        objectPosition: project.objectPosition ?? 'center',
+                      }}
+                      sizes="(max-width: 768px) 100vw, 20vw"
+                    />
+                    <div
+                      className="absolute inset-0"
+                      style={{ backgroundColor: `rgba(0,0,0,${project.imageBrightness != null ? 0.2 : 0.4})` }}
+                      aria-hidden
+                    />
+                  </>
+                )}
               </>
             )}
             {!project.image && (

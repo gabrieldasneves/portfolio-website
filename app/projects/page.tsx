@@ -28,13 +28,16 @@ const projects = [
   },
   {
     id: '3',
-    primaryTitle: 'Python, Jupyter Notebook',
-    secondaryTitle: 'Machine Learning Studies',
+    primaryTitle: 'Chrome MV3, React, TypeScript, Vite, Tailwind',
+    secondaryTitle: 'Luma',
     description:
-      "Here you'll find my collection of AI/ML/DS projects, including algorithm benchmarks, CNN practice with CIFAR-10, NBA injury prediction, and a fun manga EDA. Feel free to dive in!",
-    image: '/projects/machine-learn-studies.png',
-    url: 'https://github.com/gabrieldasneves/MachineLearnStudies',
+      'Chrome extension that captures highlights as you browse and exports them to Word or PDF with source links included. Activate observation mode, collect text across tabs, preview, and download.',
+    image: '/projects/luma.png',
+    url: 'https://chromewebstore.google.com/detail/okifnkjgkefnhikolbijhhnmlkoiiege?utm_source=item-share-cb',
     colSpan: 2,
+    imageBrightness: 1,
+    imageSize: 128,
+    imageSizeMd: 90,
   },
   {
     id: '4',
@@ -58,12 +61,12 @@ const projects = [
   },
   {
     id: '6',
-    primaryTitle: 'HTML, CSS, FIGMA',
-    secondaryTitle: 'Credit card system interface',
+    primaryTitle: 'Python, Jupyter Notebook',
+    secondaryTitle: 'Machine Learning Studies',
     description:
-      'This component simulates a credit card form, where it is possible to add mask to the inputs and update HTML elements via DOM.',
-    image: '/projects/credit-card-sys-interface.png',
-    url: 'https://github.com/gabrieldasneves/credit_card_sys_interface',
+      "Here you'll find my collection of AI/ML/DS projects, including algorithm benchmarks, CNN practice with CIFAR-10, NBA injury prediction, and a fun manga EDA. Feel free to dive in!",
+    image: '/projects/machine-learn-studies.png',
+    url: 'https://github.com/gabrieldasneves/MachineLearnStudies',
     colSpan: 6,
   },
 ]
