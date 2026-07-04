@@ -1,16 +1,13 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { ShinyText } from './shiny-text'
-import { TechLogoLoop } from './logo-loop'
+import Image from "next/image";
+import { ShinyText } from "./shiny-text";
+import { TechLogoLoop } from "./logo-loop";
 
 export function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black">
-      <div
-        className="absolute inset-0 z-0 overflow-hidden"
-        aria-hidden
-      >
+      <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden>
         <div className="absolute inset-0">
           <Image
             src="/hero-photo.png"
@@ -42,31 +39,22 @@ export function Hero() {
             />
           </h1>
           <p className="text-base md:text-lg text-center max-w-4xl mx-auto px-4">
-          <ShinyText
-            text="Computer engineer"
-            speed={2}
-            delay={0.5}
-            color="#b5b5b5"
-            shineColor="#ffffff"
-            spread={120}
-            direction="left"
-          />
-          <br />
-          <ShinyText
-            text="Paleontology enthusiast"
-            speed={2}
-            delay={0.7}
-            color="#b5b5b5"
-            shineColor="#ffffff"
-            spread={120}
-            direction="left"
-          />
-        </p>
-        <div className="w-full -mx-4 md:mx-0 md:px-8">
-          <TechLogoLoop />
+            <ShinyText
+              text="Computer engineer"
+              speed={2}
+              delay={0.5}
+              color="#b5b5b5"
+              shineColor="#ffffff"
+              spread={120}
+              direction="left"
+            />
+            <br />
+          </p>
+          <div className="w-full -mx-4 md:mx-0 md:px-8">
+            <TechLogoLoop />
+          </div>
         </div>
       </div>
-      </div>
     </section>
-  )
+  );
 }
