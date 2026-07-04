@@ -1,5 +1,6 @@
 "use client";
 import React, { useMemo, useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
 
 const FALLBACK =
   'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" ' +
@@ -50,10 +51,9 @@ const Card = React.memo(({ item, transform, cardW, cardH }: CardProps) => (
                  hover:z-10 flex flex-col"
       style={{ backfaceVisibility: "hidden" }}
     >
-      {/* Image */}
       {item.image && (
         <div className="relative h-2/5 w-full flex-shrink-0 overflow-hidden">
-          <img
+          <Image
             src={item.image}
             alt={item.title}
             width={cardW}
@@ -69,7 +69,6 @@ const Card = React.memo(({ item, transform, cardW, cardH }: CardProps) => (
         </div>
       )}
 
-      {/* Content */}
       <div
         className={`flex flex-col gap-1 p-3 overflow-hidden ${item.image ? "flex-1" : "justify-center h-full"}`}
       >
