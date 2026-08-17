@@ -13,6 +13,7 @@ export function Hero() {
             src="/hero-photo.png"
             alt=""
             fill
+            unoptimized
             className="object-cover grayscale"
             priority
             quality={92}
