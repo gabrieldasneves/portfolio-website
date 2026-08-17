@@ -22,5 +22,15 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    {
+      "pattern": "gabrieldasneves.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.gabrieldasneves.com",
+      "custom_domain": true
+    }
+  ]
 }
