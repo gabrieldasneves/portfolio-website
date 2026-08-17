@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import { AboutModal } from '@/components/about-modal'
 import { useScroll } from '@/contexts/scroll-context'
 
 const menuItems = [
@@ -65,17 +67,37 @@ const colorClasses = {
     icon: 'border-gray-500/50 bg-gray-600/30 text-gray-400 group-hover:border-green-400/60 group-hover:bg-green-500/20 group-hover:text-green-300',
     text: 'text-gray-400 group-hover:text-green-200',
   },
+  amber: {
+    icon: 'border-gray-500/50 bg-gray-600/30 text-gray-400 group-hover:border-amber-400/60 group-hover:bg-amber-500/20 group-hover:text-amber-300',
+    text: 'text-gray-400 group-hover:text-amber-200',
+  },
+}
+
+const aboutButton = {
+  label: 'About',
+  color: 'amber' as const,
+  icon: (
+    <>
+      <circle cx="12" cy="12" r="10" />
+      <path strokeLinecap="round" d="M12 16v-4" />
+      <path strokeLinecap="round" d="M12 8h.01" />
+    </>
+  ),
 }
 
 export function FloatingMenu() {
   const pathname = usePathname()
   const scrollContext = useScroll()
+  const [isAboutOpen, setIsAboutOpen] = useState(false)
   const filteredItems = menuItems.filter((item) => pathname !== item.href)
   const isHorizontal = pathname === '/projects' || pathname === '/contact'
   const scrollY = scrollContext?.scrollY ?? 0
   const isHidden = isHorizontal && scrollY > 0
+  const aboutColors = colorClasses[aboutButton.color]
 
   return (
+    <>
+    <AboutModal isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
     <ul
       className={`fixed z-30 flex gap-1 transition-all duration-300 ${
         isHidden ? '-translate-y-full opacity-0 pointer-events-none' : ''
@@ -125,6 +147,44 @@ export function FloatingMenu() {
           </li>
         )
       })}
+      <li
+        className={`group overflow-hidden rounded-lg border-transparent transition-all duration-500 hover:bg-black/60 hover:backdrop-blur-sm hover:border-gray-500/50 hover:shadow-lg ${
+          isHorizontal
+            ? 'h-14 w-14'
+            : 'w-14 hover:w-64 border-l'
+        }`}
+      >
+        <button
+          type="button"
+          onClick={() => setIsAboutOpen(true)}
+          aria-haspopup="dialog"
+          className={`group peer flex w-full cursor-pointer items-center transition-all duration-300 ease-in-out active:scale-95 ${
+            isHorizontal ? 'justify-center gap-0 px-0 py-2' : 'gap-2.5 px-3 py-2 text-left'
+          }`}
+        >
+          <div
+            className={`flex shrink-0 items-center justify-center rounded-lg border-2 p-1.5 transition-colors duration-300 ${aboutColors.icon}`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-5"
+              aria-hidden
+            >
+              {aboutButton.icon}
+            </svg>
+          </div>
+          {!isHorizontal && (
+            <span className={`font-semibold whitespace-nowrap transition-colors duration-300 ${aboutColors.text}`}>
+              {aboutButton.label}
+            </span>
+          )}
+        </button>
+      </li>
     </ul>
+    </>
   )
 }
