@@ -38,6 +38,22 @@ const menuItems = [
     ),
   },
   {
+    href: '/timeline',
+    label: 'Timeline',
+    color: 'rose',
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="10" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2 12h20" />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+        />
+      </>
+    ),
+  },
+  {
     href: '/contact',
     label: 'Contact',
     color: 'green',
@@ -67,6 +83,10 @@ const colorClasses = {
     icon: 'border-gray-500/50 bg-gray-600/30 text-gray-400 group-hover:border-green-400/60 group-hover:bg-green-500/20 group-hover:text-green-300',
     text: 'text-gray-400 group-hover:text-green-200',
   },
+  rose: {
+    icon: 'border-gray-500/50 bg-gray-600/30 text-gray-400 group-hover:border-rose-400/60 group-hover:bg-rose-500/20 group-hover:text-rose-300',
+    text: 'text-gray-400 group-hover:text-rose-200',
+  },
   amber: {
     icon: 'border-gray-500/50 bg-gray-600/30 text-gray-400 group-hover:border-amber-400/60 group-hover:bg-amber-500/20 group-hover:text-amber-300',
     text: 'text-gray-400 group-hover:text-amber-200',
@@ -90,7 +110,8 @@ export function FloatingMenu() {
   const scrollContext = useScroll()
   const [isAboutOpen, setIsAboutOpen] = useState(false)
   const filteredItems = menuItems.filter((item) => pathname !== item.href)
-  const isHorizontal = pathname === '/projects' || pathname === '/contact'
+  const isHorizontal =
+    pathname === '/projects' || pathname === '/contact' || pathname === '/timeline'
   const scrollY = scrollContext?.scrollY ?? 0
   const isHidden = isHorizontal && scrollY > 0
   const aboutColors = colorClasses[aboutButton.color]
