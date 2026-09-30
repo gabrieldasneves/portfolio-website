@@ -201,14 +201,15 @@
 .timeline-marker {
   background: transparent !important;
   border: none !important;
+  cursor: pointer;
 }
 
 .timeline-marker-dot {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 9999px;
   border: 1px solid rgba(52, 211, 153, 0.45);
   background: rgba(6, 78, 59, 0.85);
@@ -221,6 +222,15 @@
     transform 0.35s ease,
     box-shadow 0.35s ease,
     background 0.35s ease;
+}
+
+@media (max-width: 1023px) {
+  .timeline-marker-dot {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.16);
+  }
 }
 
 .timeline-marker-dot.is-active {
@@ -237,6 +247,21 @@
 
 .timeline-scroll-hint-arrow {
   animation: timeline-hint-bounce 1.4s ease-in-out infinite;
+}
+
+.timeline-float-card {
+  animation: timeline-float-in 0.4s ease-out;
+}
+
+@keyframes timeline-float-in {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
 }
 
 @keyframes timeline-hint-bounce {

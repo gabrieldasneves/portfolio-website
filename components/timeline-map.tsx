@@ -1,6 +1,11 @@
 'use client'
 
-import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react'
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+} from 'react'
 import type { Map as LeafletMap, Marker, Polyline } from 'leaflet'
 import type { TimelineStop } from '@/data/timeline'
 import 'leaflet/dist/leaflet.css'
@@ -8,6 +13,7 @@ import 'leaflet/dist/leaflet.css'
 interface TimelineMapProps {
   stops: TimelineStop[]
   activeIndex: number
+  onSelectStop?: (index: number) => void
 }
 
 export interface TimelineMapHandle {
@@ -15,8 +21,15 @@ export interface TimelineMapHandle {
   zoomOut: () => void
 }
 
-function createMarkerIcon (L: typeof import('leaflet'), label: number, isActive: boolean) {
-  const size = isActive ? 36 : 28
+function createMarkerIcon (
+  L: typeof import('leaflet'),
+  label: number,
+  isActive: boolean,
+) {
+  const isNarrow =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(max-width: 1023px)').matches
+  const size = isActive ? 40 : isNarrow ? 36 : 32
   return L.divIcon({
     className: 'timeline-marker',
     html: `<span class="timeline-marker-dot${isActive ? ' is-active' : ''}">${label}</span>`,
@@ -25,26 +38,35 @@ function createMarkerIcon (L: typeof import('leaflet'), label: number, isActive:
   })
 }
 
-function flyToStop (map: LeafletMap, stop: TimelineStop, preferLeft: boolean) {
+function moveToStop (
+  map: LeafletMap,
+  stop: TimelineStop,
+  preferLeft: boolean,
+  animate: boolean,
+) {
   const zoom = stop.zoom
   const target = map.project(stop.coords, zoom)
   if (preferLeft) {
     const size = map.getSize()
     target.x += size.x * 0.18
   }
-  map.flyTo(map.unproject(target, zoom), zoom, {
-    animate: true,
-    duration: 1.15,
+  const next = map.unproject(target, zoom)
+  map.stop()
+  map.setView(next, zoom, {
+    animate,
+    duration: animate ? 0.85 : 0,
   })
 }
 
 export const TimelineMap = forwardRef<TimelineMapHandle, TimelineMapProps>(
-  function TimelineMap ({ stops, activeIndex }, ref) {
+  function TimelineMap ({ stops, activeIndex, onSelectStop }, ref) {
     const containerRef = useRef<HTMLDivElement>(null)
     const mapRef = useRef<LeafletMap | null>(null)
     const markersRef = useRef<Marker[]>([])
     const routeRef = useRef<Polyline | null>(null)
+    const leafletRef = useRef<typeof import('leaflet') | null>(null)
     const activeIndexRef = useRef(activeIndex)
+    const onSelectStopRef = useRef(onSelectStop)
 
     useImperativeHandle(ref, () => ({
       zoomIn: () => {
@@ -60,6 +82,10 @@ export const TimelineMap = forwardRef<TimelineMapHandle, TimelineMapProps>(
     }, [activeIndex])
 
     useEffect(() => {
+      onSelectStopRef.current = onSelectStop
+    }, [onSelectStop])
+
+    useEffect(() => {
       if (!containerRef.current || mapRef.current) return
 
       let cancelled = false
@@ -67,6 +93,8 @@ export const TimelineMap = forwardRef<TimelineMapHandle, TimelineMapProps>(
       async function initMap () {
         const L = await import('leaflet')
         if (cancelled || !containerRef.current) return
+
+        leafletRef.current = L
 
         const first = stops[0]
         if (!first) return
@@ -105,9 +133,18 @@ export const TimelineMap = forwardRef<TimelineMapHandle, TimelineMapProps>(
 
         const markers = stops.map((stop, index) => {
           const marker = L.marker(stop.coords, {
-            icon: createMarkerIcon(L, stop.index, index === activeIndexRef.current),
-            interactive: false,
+            icon: createMarkerIcon(
+              L,
+              stop.index,
+              index === activeIndexRef.current,
+            ),
+            interactive: true,
           }).addTo(map)
+
+          marker.on('click', () => {
+            onSelectStopRef.current?.(index)
+          })
+
           return marker
         })
 
@@ -116,7 +153,8 @@ export const TimelineMap = forwardRef<TimelineMapHandle, TimelineMapProps>(
         routeRef.current = route
 
         const preferLeft = window.matchMedia('(min-width: 1024px)').matches
-        flyToStop(map, stops[activeIndexRef.current] ?? first, preferLeft)
+        const current = stops[activeIndexRef.current] ?? first
+        moveToStop(map, current, preferLeft, false)
 
         const handleResize = () => {
           map.invalidateSize()
@@ -143,6 +181,7 @@ export const TimelineMap = forwardRef<TimelineMapHandle, TimelineMapProps>(
         cleanupResize?.()
         routeRef.current = null
         markersRef.current = []
+        leafletRef.current = null
         if (mapRef.current) {
           mapRef.current.remove()
           mapRef.current = null
@@ -152,35 +191,22 @@ export const TimelineMap = forwardRef<TimelineMapHandle, TimelineMapProps>(
 
     useEffect(() => {
       const map = mapRef.current
-      if (!map) return
+      const L = leafletRef.current
+      if (!map || !L) return
 
-      let cancelled = false
-
-      async function updateActive () {
-        const L = await import('leaflet')
-        if (cancelled || !mapRef.current) return
-
-        markersRef.current.forEach((marker, index) => {
-          const stop = stops[index]
-          if (!stop) return
-          marker.setIcon(createMarkerIcon(L, stop.index, index === activeIndex))
-        })
-
-        const stop = stops[activeIndex]
+      markersRef.current.forEach((marker, index) => {
+        const stop = stops[index]
         if (!stop) return
-        const preferLeft = window.matchMedia('(min-width: 1024px)').matches
-        flyToStop(mapRef.current, stop, preferLeft)
-      }
+        marker.setIcon(createMarkerIcon(L, stop.index, index === activeIndex))
+      })
 
-      void updateActive()
+      const stop = stops[activeIndex]
+      if (!stop) return
 
-      return () => {
-        cancelled = true
-      }
+      const preferLeft = window.matchMedia('(min-width: 1024px)').matches
+      moveToStop(map, stop, preferLeft, true)
     }, [activeIndex, stops])
 
-    return (
-      <div ref={containerRef} className="timeline-map h-full w-full" aria-hidden />
-    )
+    return <div ref={containerRef} className="timeline-map h-full w-full" />
   },
 )
