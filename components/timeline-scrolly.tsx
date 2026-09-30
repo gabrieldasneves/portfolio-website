@@ -205,6 +205,15 @@ export function TimelineScrolly () {
     if (!root) return
 
     let frame = 0
+    let settleTimer = 0
+
+    function commitActiveIndex (nextIndex: number) {
+      setActiveIndex((prev) => {
+        if (prev === nextIndex) return prev
+        setIsSheetOpen(false)
+        return nextIndex
+      })
+    }
 
     function updateActiveFromScroll () {
       const sections = sectionRefs.current
@@ -224,11 +233,16 @@ export function TimelineScrolly () {
         if (rect.top <= focusY) nextIndex = index
       }
 
-      setActiveIndex((prev) => {
-        if (prev === nextIndex) return prev
-        setIsSheetOpen(false)
-        return nextIndex
-      })
+      if (isLg) {
+        commitActiveIndex(nextIndex)
+        return
+      }
+
+      // On mobile, wait for scroll to settle a bit so the camera eases once
+      window.clearTimeout(settleTimer)
+      settleTimer = window.setTimeout(() => {
+        commitActiveIndex(nextIndex)
+      }, 90)
     }
 
     function onScroll () {
@@ -242,6 +256,7 @@ export function TimelineScrolly () {
 
     return () => {
       cancelAnimationFrame(frame)
+      window.clearTimeout(settleTimer)
       root.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
     }
@@ -342,7 +357,7 @@ export function TimelineScrolly () {
                       sectionRefs.current[index] = node
                     }}
                     data-index={index}
-                    className="flex min-h-[35dvh] items-center lg:min-h-[100dvh]"
+                    className="flex min-h-[50dvh] items-center lg:min-h-[100dvh]"
                     aria-label={`${stop.title}, ${stop.location}`}
                   >
                     <div className="hidden w-full lg:block">

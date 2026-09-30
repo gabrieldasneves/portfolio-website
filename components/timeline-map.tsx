@@ -51,10 +51,16 @@ function moveToStop (
     target.x += size.x * 0.18
   }
   const next = map.unproject(target, zoom)
-  map.stop()
-  map.setView(next, zoom, {
-    animate,
-    duration: animate ? 0.85 : 0,
+
+  if (!animate) {
+    map.setView(next, zoom, { animate: false })
+    return
+  }
+
+  map.flyTo(next, zoom, {
+    animate: true,
+    duration: 1.7,
+    easeLinearity: 0.2,
   })
 }
 
