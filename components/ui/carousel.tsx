@@ -9,17 +9,7 @@ import {
   type CSSProperties,
   type ReactElement,
   type ReactNode
-} from 'react';
-import { HugeiconsIcon } from '@hugeicons/react';
-import {
-  ArrowLeft01Icon,
-  ArrowRight01Icon,
-  CommandIcon,
-  Drag04Icon,
-  Image01Icon,
-  Layers01Icon,
-  Timer02Icon
-} from '@hugeicons/core-free-icons';
+} from 'react'
 
 export interface CarouselItem {
   id?: string | number;
@@ -152,33 +142,28 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     id: 1,
     title: 'Swipe with momentum',
     description: 'Fling the cards and they glide into place.',
-    icon: <HugeiconsIcon icon={Drag04Icon} size={16} strokeWidth={1.8} />
   },
   {
     id: 2,
     title: 'Autoplay with a timer',
     description: 'The indicator fills up so people know what comes next.',
-    icon: <HugeiconsIcon icon={Timer02Icon} size={16} strokeWidth={1.8} />
   },
   {
     id: 3,
     title: 'Five transitions',
     description: 'Tilt, slide, scale, fade or turn the cards like a cube.',
-    icon: <HugeiconsIcon icon={Layers01Icon} size={16} strokeWidth={1.8} />
   },
   {
     id: 4,
     title: 'Keyboard friendly',
     description: 'Arrow keys, Home and End move between the cards.',
-    icon: <HugeiconsIcon icon={CommandIcon} size={16} strokeWidth={1.8} />
   },
   {
     id: 5,
     title: 'Bring any content',
     description: 'Pass text, images or your own components as cards.',
-    icon: <HugeiconsIcon icon={Image01Icon} size={16} strokeWidth={1.8} />
-  }
-];
+  },
+]
 
 const THEMES: Record<string, Record<string, string>> = {
   dark: {
@@ -295,8 +280,22 @@ const keyOf = (item: CarouselEntry, index: number) => {
 }
 
 const Chevron = ({ flip = false }: { flip?: boolean }) => (
-  <HugeiconsIcon icon={flip ? ArrowLeft01Icon : ArrowRight01Icon} size={16} strokeWidth={2} />
-);
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width="16"
+    height="16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden
+    style={flip ? { transform: 'scaleX(-1)' } : undefined}
+  >
+    <path d="m9 18 6-6-6-6" />
+  </svg>
+)
 
 const Card = ({ item, round, compact }: { item: CarouselEntry; round: boolean; compact: boolean }) => {
   if (isValidElement(item)) {
